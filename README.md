@@ -1,57 +1,10 @@
 # zabbix_clear_data
-zabbix清理数据
+
+###
+zabbix_clear_data
+
+线上zabbix数据增长比较快，一不小心个别表就40多G，历史监控数据多我没多大用就搞了个定时清理，节约一些磁盘空间，一切只是为了省钱~！
 
 
+![demo](https://github.com/MorningSong/zabbix_clear_data/blob/master/demo/sql_table.png)
 
-mysql> use zabbix;
-
-Reading table information for completion of table and column names
-
-You can turn off this feature to get a quicker startup with -A
-
-Database changed
-
-mysql> desc history;
-
-+--------+---------------------+------+-----+---------+----------------+
-
-| Field  | Type                | Null | Key | Default | Extra          |
-
-+--------+---------------------+------+-----+---------+----------------+
-
-| id     | int(11)             | NO   | PRI | NULL    | auto_increment |
-
-| itemid | bigint(20) unsigned | NO   | MUL | NULL    |                |
-
-| clock  | int(11)             | NO   | MUL | 0       |                |
-
-| value  | double(16,4)        | NO   |     | 0.0000  |                |
-
-| ns     | int(11)             | NO   |     | 0       |                |
-
-+--------+---------------------+------+-----+---------+----------------+
-
-5 rows in set (0.00 sec)
-
-
-mysql> desc history_uint;
-
-+--------+---------------------+------+-----+---------+----------------+
-
-| Field  | Type                | Null | Key | Default | Extra          |
-
-+--------+---------------------+------+-----+---------+----------------+
-
-| id     | int(11)             | NO   | PRI | NULL    | auto_increment |
-
-| itemid | bigint(20) unsigned | NO   | MUL | NULL    |                |
-
-| clock  | int(11)             | NO   | MUL | 0       |                |
-
-| value  | bigint(20) unsigned | NO   |     | 0       |                |
-
-| ns     | int(11)             | NO   |     | 0       |                |
-
-+--------+---------------------+------+-----+---------+----------------+
-
-5 rows in set (0.00 sec)
