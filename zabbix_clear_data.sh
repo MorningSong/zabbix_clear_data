@@ -20,10 +20,10 @@ do
             echo "delete data: id <$i"
             if (( "$i" < "$MySQL_Table_MaxID" ));then
                 Delete_MaxID="$i"
-                $MySQL_Path -u$MySQL_User -p$MySQL_Passwd -e "Delete from zabbix.history where id < $Delete_MaxID;"
+                $MySQL_Path -u$MySQL_User -p$MySQL_Passwd -e "Delete from zabbix.$table where id < $Delete_MaxID;"
             else
                 Delete_MaxID="$MySQL_Table_MaxID"
-                $MySQL_Path -u$MySQL_User -p$MySQL_Passwd -e "Delete from zabbix.history where id < $Delete_MaxID;"
+                $MySQL_Path -u$MySQL_User -p$MySQL_Passwd -e "Delete from zabbix.$table where id < $Delete_MaxID;"
                 break;
             fi
         done
